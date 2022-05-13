@@ -131,7 +131,5 @@ dmypy.json
 .idea/
 .vscode/
 *.iml
-.env
 .DS_Store
-venv/
-.pytest_cache/
+files_to_check/

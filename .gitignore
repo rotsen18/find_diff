@@ -133,3 +133,5 @@ dmypy.json
 *.iml
 .DS_Store
 files_to_check/
+app/added.txt
+app/deleted.txt

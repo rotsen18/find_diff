@@ -43,11 +43,11 @@ def get_base_file_name(message, files):
     return names_with_numbers[int(choice)]
 
 
-def print_result(name_list, list_type):
+def print_result(name_list, list_type, file_name):
     print(f'{len(name_list)} {list_type} names:')
     result_file_name = list_type + '.txt'
     with open(result_file_name, 'w') as f1:
-        f1.writelines(f'{len(name_list)} {list_type} names:\n')
+        f1.writelines(f'Changes in {file_name} => {list_type} {len(name_list)} names:\n\n')
         for name in name_list:
             name = name.replace('\n', '')
             print(name)
@@ -78,8 +78,8 @@ def main():
     added_names = file_with_changes.difference(base_file)
     print(f'You have {len(added_names)} new names and {len(deleted_names)} deleted\n')
 
-    print_result(added_names, 'added')
-    print_result(deleted_names, 'deleted')
+    print_result(added_names, 'added', base_file_name)
+    print_result(deleted_names, 'deleted', base_file_name)
 
 
 main()

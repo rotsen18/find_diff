@@ -34,10 +34,12 @@ def get_base_file_name(message, files):
     print()
     choice = input(message)
     if not choice.isdigit():
-        get_base_file_name('Probably typo in your input. Write only number end press enter: ', files)
-    if 1 < int(choice) < 2:
-        get_base_file_name('Choose from 1 or 2: ', files)
-
+        print('Probably typo in your input. Write only number end press enter')
+        return False
+    if int(choice) > 2 or int(choice) < 1:
+        print(choice + " is wrong number.......\n")
+        print('Choose from 1 or 2')
+        return False
     return names_with_numbers[int(choice)]
 
 
@@ -59,7 +61,10 @@ def main():
         print("There are should be 2 files in directory <files_to_check>")
         print("Copy your files to folder and try again")
         return
-    base_file_name = get_base_file_name("Which file should be base? ", files)
+
+    base_file_name = ''
+    while not base_file_name:
+        base_file_name = get_base_file_name("Which file should be base? ", files)
 
     print("Base file is:", base_file_name)
     base_file = set(files.pop(base_file_name))

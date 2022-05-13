@@ -7,6 +7,8 @@ PATH = '../files_to_check'
 
 def get_data(path):
     file_names = [f for f in listdir(path) if isfile(join(path, f))]
+    if len(file_names) < 2:
+        return False
     files = {}
     for name in file_names:
         file = open(join(path, name), 'r')
@@ -53,6 +55,10 @@ def print_result(name_list, list_type):
 
 def main():
     files = get_data(PATH)
+    if not files:
+        print("There are should be 2 files in directory <files_to_check>")
+        print("Copy your files to folder and try again")
+        return
     base_file_name = get_base_file_name("Which file should be base? ", files)
 
     print("Base file is:", base_file_name)
